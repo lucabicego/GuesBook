@@ -1,7 +1,7 @@
 var http = require("http");
 var path = require("path");
 var express = require("express");
-var logger = require("morgan");
+//var logger = require("morgan");
 var bodyParser = require("body-parser");
 var port =  process.env.OPENSHIFT_NODEJS_PORT || 3000;   // Port 3000 if you run locally 
 var address =  process.env.OPENSHIFT_NODEJS_IP || "127.0.0.1"; // Listening to localhost if you run locally 
@@ -10,7 +10,7 @@ app.set("views", path.resolve(__dirname, "views"));
 app.set("view engine", "ejs");
 var entries = [];
 app.locals.entries = entries;
-app.use(logger("dev"));
+//app.use(logger("dev"));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.get("/", function(request, response) 
    {
