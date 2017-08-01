@@ -2,6 +2,7 @@
   "name": "express-guestbook",
   "private": true,
   "commento":"La seguente direttiva e' uilizzata per avviare l'applicativo con npm start ",
+  "main":"app.js",
   "scripts": {
     "start": "node app"
   },
