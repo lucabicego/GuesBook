@@ -1,4 +1,4 @@
-var http = require("http");
+//var http = require("http");
 var path = require("path");
 var express = require("express");
 var logger = require("morgan");
@@ -7,6 +7,7 @@ var port =  process.env.OPENSHIFT_NODEJS_PORT || 3000;   // Port 3000 if you run
 var address =  process.env.OPENSHIFT_NODEJS_IP || "127.0.0.1"; // Listening to localhost if you run locally 
 var app = express();
 app.set('port',port);
+app.set('address',address);
 app.set("views", path.resolve(__dirname, "views"));
 app.set("view engine", "ejs");
 var entries = [];
@@ -35,7 +36,14 @@ app.use(function(request, response)
   {
 	  response.status(404).render("404");
   });  
+var listener = app.listen(port, address, function(){
+     console.log("Guestbook app started on address "+app.get('address'));
+     console.log("Guestbook app started on port "+app.get('port'));
+});  
+/*
 http.createServer(app).listen(port, function() 
   {
-     console.log("Guestbook app started on port "+port);
+     console.log("Guestbook app started on address "+app.get('address'));
+     console.log("Guestbook app started on port "+app.get('port'));
 });  
+*/
